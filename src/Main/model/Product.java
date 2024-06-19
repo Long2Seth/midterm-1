@@ -1,12 +1,12 @@
 package Main.model;
 
 public class Product {
-
     private int id;
     private String name;
     private double price_per_unit;
     private int active_for_sale;
 
+    // Getters and setters
 
     public int getId() {
         return id;
@@ -16,11 +16,11 @@ public class Product {
         this.id = id;
     }
 
-    public java.lang.String getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(java.lang.String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -39,6 +39,4 @@ public class Product {
     public void setActive_for_sale(int active_for_sale) {
         this.active_for_sale = active_for_sale;
     }
-
-
 }

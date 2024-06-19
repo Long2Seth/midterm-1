@@ -3,9 +3,10 @@ package Main.controller;
 import Main.model.Product;
 import Main.service.ProductService;
 
-public class ProductController {
+import java.util.List;
 
-    private  final ProductService productService;
+public class ProductController {
+    private final ProductService productService;
 
     public ProductController(ProductService productService) {
         this.productService = productService;
@@ -15,8 +16,8 @@ public class ProductController {
         productService.createProduct(product);
     }
 
-    public void readProduct( int id) {
-        productService.readProduct( id);
+    public Product readProduct(int id) {
+        return productService.readProduct(id);
     }
 
     public void updateProduct(Product product) {
@@ -27,10 +28,7 @@ public class ProductController {
         productService.deleteProduct(id);
     }
 
-    public boolean readAllProducts() {
-        productService.readAllProducts();
-        return false;
+    public List<Product> readAllProducts() {
+        return productService.readAllProducts();
     }
-
-
 }

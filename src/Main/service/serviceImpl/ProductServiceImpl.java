@@ -26,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
             pstmt.setInt(1, product.getId());
             pstmt.setString(2, product.getName());
             pstmt.setDouble(3, product.getPrice_per_unit());
-            pstmt.setInt(4, product.getActive_for_sale());
+            pstmt.setBoolean(4, product.getActive_for_sale() == 1);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error creating product", e);
@@ -47,7 +47,7 @@ public class ProductServiceImpl implements ProductService {
                 product.setId(rs.getInt("id"));
                 product.setName(rs.getString("name"));
                 product.setPrice_per_unit(rs.getDouble("price_per_unit"));
-                product.setActive_for_sale(rs.getInt("active_for_sale"));
+                product.setActive_for_sale(rs.getBoolean("active_for_sale") ? 1 : 0);
             }
         } catch (SQLException e) {
             throw new RuntimeException("Error reading product", e);
@@ -63,7 +63,7 @@ public class ProductServiceImpl implements ProductService {
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, product.getName());
             pstmt.setDouble(2, product.getPrice_per_unit());
-            pstmt.setInt(3, product.getActive_for_sale());
+            pstmt.setBoolean(3, product.getActive_for_sale() == 1);
             pstmt.setInt(4, product.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -96,7 +96,7 @@ public class ProductServiceImpl implements ProductService {
                 product.setId(rs.getInt("id"));
                 product.setName(rs.getString("name"));
                 product.setPrice_per_unit(rs.getDouble("price_per_unit"));
-                product.setActive_for_sale(rs.getInt("active_for_sale"));
+                product.setActive_for_sale(rs.getBoolean("active_for_sale") ? 1 : 0);
                 products.add(product);
             }
         } catch (SQLException e) {
@@ -105,5 +105,4 @@ public class ProductServiceImpl implements ProductService {
 
         return products;
     }
-
 }
