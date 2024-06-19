@@ -27,8 +27,9 @@ public class ProductController {
         productService.deleteProduct(id);
     }
 
-    public void readAllProducts() {
+    public boolean readAllProducts() {
         productService.readAllProducts();
+        return false;
     }
 
 
